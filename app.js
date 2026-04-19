@@ -70,6 +70,7 @@
         const draftQuantity = state.draftQuantities[product.id] || 1;
         const inCart = state.cart[product.id] || 0;
         const addLabel = inCart > 0 ? "Sumar al carrito" : "Agregar al carrito";
+        const addButtonClass = inCart > 0 ? "add-button is-added" : "add-button";
 
         return `
           <article class="product-card">
@@ -87,7 +88,7 @@
                   <span>${draftQuantity}</span>
                   <button type="button" data-action="draft-increment" data-product-id="${escapeHtml(product.id)}" aria-label="Agregar una unidad">+</button>
                 </div>
-                <button type="button" class="add-button" data-action="add-to-cart" data-product-id="${escapeHtml(product.id)}">
+                <button type="button" class="${addButtonClass}" data-action="add-to-cart" data-product-id="${escapeHtml(product.id)}">
                   ${addLabel}
                 </button>
               </div>

@@ -392,6 +392,15 @@ button {
   transform: translateY(-1px);
 }
 
+.add-button.is-added {
+  background: linear-gradient(135deg, var(--gray-deep), var(--blue-primary));
+  box-shadow: 0 12px 24px rgba(31, 41, 51, 0.18);
+}
+
+.add-button.is-added:hover {
+  background: linear-gradient(135deg, #273543, #285f9b);
+}
+
 .cart-list {
   display: grid;
   gap: 12px;
