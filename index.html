@@ -7,6 +7,26 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <button
+    class="mobile-cart-toggle"
+    id="mobile-cart-toggle"
+    type="button"
+    aria-controls="cart-panel"
+    aria-expanded="false"
+    aria-label="Mostrar carrito"
+  >
+    <span class="mobile-cart-toggle__icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" focusable="false">
+        <circle cx="9" cy="19" r="1.8"></circle>
+        <circle cx="17" cy="19" r="1.8"></circle>
+        <path d="M3 4h2.2l2.1 9.2a1 1 0 0 0 1 .8h8.8a1 1 0 0 0 1-.8l1.5-6.1H7.1"></path>
+      </svg>
+    </span>
+    <span class="mobile-cart-toggle__text">Carrito</span>
+    <span class="mobile-cart-toggle__count" id="mobile-cart-count">0</span>
+  </button>
+  <div class="mobile-cart-backdrop" id="mobile-cart-backdrop" hidden></div>
+
   <div class="page-shell">
     <header class="hero">
       <div class="hero__topbar">
@@ -49,7 +69,7 @@
         <div class="product-grid" id="product-grid"></div>
       </section>
 
-      <aside class="cart-panel" aria-labelledby="cart-title">
+      <aside class="cart-panel" id="cart-panel" aria-labelledby="cart-title">
         <div class="cart-panel__header">
           <div>
             <span class="section-tag">Tu carrito</span>

@@ -8,11 +8,17 @@
   const heroProductCount = document.getElementById("hero-product-count");
   const heroCartCount = document.getElementById("hero-cart-count");
   const whatsappButton = document.getElementById("whatsapp-button");
+  const cartPanel = document.getElementById("cart-panel");
+  const mobileCartToggle = document.getElementById("mobile-cart-toggle");
+  const mobileCartCount = document.getElementById("mobile-cart-count");
+  const mobileCartBackdrop = document.getElementById("mobile-cart-backdrop");
   const whatsappNumber = "5491126980656";
+  const mobileViewportQuery = window.matchMedia("(max-width: 760px)");
 
   const state = {
     draftQuantities: Object.fromEntries(products.map((product) => [product.id, 1])),
-    cart: {}
+    cart: {},
+    mobileCartOpen: false
   };
 
   function escapeHtml(value) {
@@ -55,6 +61,26 @@
     ];
 
     return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(lines.join("\n"))}`;
+  }
+
+  function isMobileViewport() {
+    return mobileViewportQuery.matches;
+  }
+
+  function syncMobileCartState() {
+    const isOpen = isMobileViewport() && state.mobileCartOpen;
+
+    cartPanel.classList.toggle("is-open", isOpen);
+    mobileCartToggle.classList.toggle("is-active", isOpen);
+    mobileCartToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileCartToggle.setAttribute("aria-label", isOpen ? "Ocultar carrito" : "Mostrar carrito");
+    mobileCartBackdrop.hidden = !isOpen;
+    document.body.classList.toggle("mobile-cart-open", isOpen);
+  }
+
+  function setMobileCartOpen(nextValue) {
+    state.mobileCartOpen = Boolean(nextValue) && isMobileViewport();
+    syncMobileCartState();
   }
 
   function renderProducts() {
@@ -107,12 +133,14 @@
     summaryProducts.textContent = String(totals.selectedProducts);
     summaryUnits.textContent = String(totals.totalUnits);
     heroCartCount.textContent = String(totals.totalUnits);
+    mobileCartCount.textContent = String(totals.totalUnits);
 
     if (!entries.length) {
       cartList.innerHTML = '<div class="empty-state"><p>Seleccioná productos para empezar tu pedido.</p></div>';
       whatsappButton.className = "whatsapp-button whatsapp-button--disabled";
       whatsappButton.setAttribute("href", "#");
       whatsappButton.setAttribute("aria-disabled", "true");
+      syncMobileCartState();
       return;
     }
 
@@ -139,6 +167,7 @@
     whatsappButton.className = "whatsapp-button";
     whatsappButton.setAttribute("href", createWhatsAppLink(entries));
     whatsappButton.setAttribute("aria-disabled", "false");
+    syncMobileCartState();
   }
 
   function render() {
@@ -223,6 +252,34 @@
   whatsappButton.addEventListener("click", (event) => {
     if (whatsappButton.getAttribute("aria-disabled") === "true") {
       event.preventDefault();
+    }
+  });
+
+  mobileCartToggle.addEventListener("click", () => {
+    setMobileCartOpen(!state.mobileCartOpen);
+  });
+
+  mobileCartBackdrop.addEventListener("click", () => {
+    setMobileCartOpen(false);
+  });
+
+  const handleViewportChange = () => {
+    if (!isMobileViewport()) {
+      state.mobileCartOpen = false;
+    }
+
+    syncMobileCartState();
+  };
+
+  if (typeof mobileViewportQuery.addEventListener === "function") {
+    mobileViewportQuery.addEventListener("change", handleViewportChange);
+  } else if (typeof mobileViewportQuery.addListener === "function") {
+    mobileViewportQuery.addListener(handleViewportChange);
+  }
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileCartOpen(false);
     }
   });
 
