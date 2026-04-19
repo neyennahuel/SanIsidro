@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>San Isidro Distribuidora Mayorista</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero__topbar">
+        <div class="brand">
+          <img class="brand__logo" src="logo.png" alt="San Isidro Distribuidora Mayorista">
+          <div class="brand__copy">
+            <span class="brand__eyebrow">Distribuidora mayorista</span>
+            <h1>San Isidro</h1>
+            <p>Armá tu pedido de forma simple y confirmalo por WhatsApp.</p>
+          </div>
+        </div>
+        <a class="hero__cta" href="#productos">Ver productos</a>
+      </div>
+
+      <div class="hero__content">
+        <div class="hero__intro">
+          <span class="section-tag">Pedido ágil</span>
+          <h2>Productos listos para sumar al carrito.</h2>
+          <p>Elegí cantidades, revisá tu pedido y confirmalo en un solo paso.</p>
+          <div class="hero__highlights">
+            <div>
+              <strong id="hero-product-count">5</strong>
+              <span>productos</span>
+            </div>
+            <div>
+              <strong id="hero-cart-count">0</strong>
+              <span>unidades</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="catalog" id="productos" aria-labelledby="catalog-title">
+        <div class="section-heading">
+          <span class="section-tag">Productos</span>
+          <h2 id="catalog-title">Armá tu pedido</h2>
+        </div>
+        <div class="product-grid" id="product-grid"></div>
+      </section>
+
+      <aside class="cart-panel" aria-labelledby="cart-title">
+        <div class="cart-panel__header">
+          <div>
+            <span class="section-tag">Tu carrito</span>
+            <h2 id="cart-title">Resumen del pedido</h2>
+          </div>
+          <span class="cart-badge" id="cart-badge">0 productos</span>
+        </div>
+
+        <div class="cart-list" id="cart-list">
+          <div class="empty-state">
+            <p>Seleccioná productos para empezar tu pedido.</p>
+          </div>
+        </div>
+
+        <div class="cart-summary">
+          <div class="summary-row">
+            <span>Productos seleccionados</span>
+            <strong id="summary-products">0</strong>
+          </div>
+          <div class="summary-row">
+            <span>Unidades totales</span>
+            <strong id="summary-units">0</strong>
+          </div>
+        </div>
+
+        <a
+          class="whatsapp-button whatsapp-button--disabled"
+          id="whatsapp-button"
+          href="#"
+          target="_blank"
+          rel="noreferrer"
+          aria-disabled="true"
+        >
+          Confirmar pedido por WhatsApp
+        </a>
+      </aside>
+    </main>
+  </div>
+
+  <script src="catalog.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
