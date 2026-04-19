@@ -392,11 +392,6 @@ button {
   transform: translateY(-1px);
 }
 
-.add-button.is-added {
-  background: var(--gray-deep);
-  box-shadow: 0 12px 24px rgba(31, 41, 51, 0.16);
-}
-
 .cart-list {
   display: grid;
   gap: 12px;
