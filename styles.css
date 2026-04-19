@@ -86,17 +86,15 @@ button {
 .brand {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 22px;
 }
 
 .brand__logo {
-  width: 88px;
-  height: 88px;
-  object-fit: cover;
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.18);
-  padding: 6px;
-  box-shadow: 0 16px 32px rgba(31, 41, 51, 0.2);
+  width: 116px;
+  height: 116px;
+  flex-shrink: 0;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 28px rgba(31, 41, 51, 0.16));
 }
 
 .brand__copy h1,
@@ -555,8 +553,8 @@ button {
   }
 
   .brand__logo {
-    width: 76px;
-    height: 76px;
+    width: 98px;
+    height: 98px;
   }
 
   .hero__cta {
