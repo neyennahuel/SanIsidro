@@ -59,6 +59,10 @@ svg {
   display: none;
 }
 
+.mobile-cart-backdrop[hidden] {
+  display: none;
+}
+
 .hero {
   position: relative;
   overflow: hidden;
@@ -553,10 +557,11 @@ svg {
     z-index: 45;
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    min-height: 56px;
-    padding: 0 14px 0 12px;
-    border-radius: 20px;
+    justify-content: center;
+    width: 58px;
+    height: 58px;
+    padding: 0;
+    border-radius: 18px;
     background: linear-gradient(135deg, var(--blue-primary), var(--blue-secondary));
     color: var(--white);
     box-shadow: 0 18px 36px rgba(31, 41, 51, 0.22);
@@ -572,39 +577,20 @@ svg {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.14);
   }
 
   .mobile-cart-toggle__icon svg {
-    width: 18px;
-    height: 18px;
+    width: 19px;
+    height: 19px;
     fill: none;
     stroke: currentColor;
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke-width: 1.9;
-  }
-
-  .mobile-cart-toggle__text {
-    font-size: 0.96rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-  }
-
-  .mobile-cart-toggle__count {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 28px;
-    height: 28px;
-    padding: 0 8px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.2);
-    font-size: 0.9rem;
-    font-weight: 800;
   }
 
   .mobile-cart-backdrop {

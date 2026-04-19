@@ -10,7 +10,6 @@
   const whatsappButton = document.getElementById("whatsapp-button");
   const cartPanel = document.getElementById("cart-panel");
   const mobileCartToggle = document.getElementById("mobile-cart-toggle");
-  const mobileCartCount = document.getElementById("mobile-cart-count");
   const mobileCartBackdrop = document.getElementById("mobile-cart-backdrop");
   const whatsappNumber = "5491126980656";
   const mobileViewportQuery = window.matchMedia("(max-width: 760px)");
@@ -133,7 +132,6 @@
     summaryProducts.textContent = String(totals.selectedProducts);
     summaryUnits.textContent = String(totals.totalUnits);
     heroCartCount.textContent = String(totals.totalUnits);
-    mobileCartCount.textContent = String(totals.totalUnits);
 
     if (!entries.length) {
       cartList.innerHTML = '<div class="empty-state"><p>Seleccioná productos para empezar tu pedido.</p></div>';
