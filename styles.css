@@ -107,7 +107,7 @@ svg {
   height: 116px;
   flex-shrink: 0;
   object-fit: contain;
-  filter: drop-shadow(0 14px 28px rgba(31, 41, 51, 0.16));
+  background: transparent;
 }
 
 .brand__copy h1,
